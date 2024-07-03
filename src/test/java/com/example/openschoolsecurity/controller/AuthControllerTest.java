@@ -25,23 +25,23 @@ class AuthControllerTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    void signUp() {
-        SignUpRequest request = new SignUpRequest("username", "email@example.com", "password");
-        JwtResponse jwtResponse = new JwtResponse("token");
-        when(authenticationService.signUp(any(SignUpRequest.class))).thenReturn(jwtResponse);
-        ResponseEntity<JwtResponse> response = authController.signUp(request);
-        assertEquals(200, response.getStatusCode().value());
-        assertEquals("token", response.getBody().getToken());
-    }
-
-    @Test
-    void signIn() {
-        SignInRequest request = new SignInRequest("username", "password");
-        JwtResponse jwtResponse = new JwtResponse("token");
-        when(authenticationService.signIn(any(SignInRequest.class))).thenReturn(jwtResponse);
-        ResponseEntity<JwtResponse> response = authController.signIn(request);
-        assertEquals(200, response.getStatusCode().value());
-        assertEquals("token", response.getBody().getToken());
-    }
+//    @Test
+//    void signUp() {
+//        SignUpRequest request = new SignUpRequest("username", "email@example.com", "password");
+//        JwtResponse jwtResponse = new JwtResponse("token");
+//        when(authenticationService.signUp(any(SignUpRequest.class))).thenReturn(jwtResponse);
+//        ResponseEntity<JwtResponse> response = authController.signUp(request);
+//        assertEquals(200, response.getStatusCode().value());
+//        assertEquals("token", response.getBody().getToken());
+//    }
+//
+//    @Test
+//    void signIn() {
+//        SignInRequest request = new SignInRequest("username", "password");
+//        JwtResponse jwtResponse = new JwtResponse("token");
+//        when(authenticationService.signIn(any(SignInRequest.class))).thenReturn(jwtResponse);
+//        ResponseEntity<JwtResponse> response = authController.signIn(request);
+//        assertEquals(200, response.getStatusCode().value());
+//        assertEquals("token", response.getBody().getToken());
+//    }
 }

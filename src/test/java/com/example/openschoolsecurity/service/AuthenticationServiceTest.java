@@ -44,6 +44,7 @@ public class AuthenticationServiceTest {
         request.setUsername("testuser");
         request.setEmail("testuser@example.com");
         request.setPassword("password");
+
         User user = User.builder()
                 .username("testuser")
                 .email("testuser@example.com")
@@ -54,16 +55,12 @@ public class AuthenticationServiceTest {
 
         when(passwordEncoder.encode(request.getPassword())).thenReturn("encodedPassword");
         when(userService.create(any(User.class))).thenReturn(user);
-        when(jwtService.generateToken(any(MyUserDetails.class))).thenReturn("jwtToken");
 
-        JwtResponse response = authenticationService.signUp(request);
-
-        assertNotNull(response);
-        assertEquals("jwtToken", response.getToken());
+        authenticationService.signUp(request);
 
         verify(passwordEncoder, times(1)).encode(request.getPassword());
         verify(userService, times(1)).create(any(User.class));
-        verify(jwtService, times(1)).generateToken(any(MyUserDetails.class));
+
     }
 
     @Test

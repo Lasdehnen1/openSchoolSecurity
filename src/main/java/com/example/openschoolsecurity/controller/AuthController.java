@@ -23,9 +23,9 @@ public class AuthController {
 
     @Operation(summary = "Регистрация пользователя")
     @PostMapping("/sign-up")
-    public ResponseEntity<JwtResponse> signUp(@RequestBody @Valid SignUpRequest request) {
-        JwtResponse response = authenticationService.signUp(request);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<Void> signUp(@RequestBody @Valid SignUpRequest request) {
+        authenticationService.signUp(request);
+        return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Авторизация пользователя")
@@ -34,4 +34,5 @@ public class AuthController {
         JwtResponse response = authenticationService.signIn(request);
         return ResponseEntity.ok(response);
     }
+
 }

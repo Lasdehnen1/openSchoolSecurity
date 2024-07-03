@@ -28,4 +28,5 @@ public class ExampleController {
     public String exampleAdmin() {
         return "Hello, admin!";
     }
+
 }

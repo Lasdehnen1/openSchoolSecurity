@@ -26,7 +26,7 @@ public class AuthenticationService {
      * @param request данные пользователя
      * @return токен
      */
-    public JwtResponse signUp(SignUpRequest request) {
+    public void signUp(SignUpRequest request) {
 
         var user = User.builder()
                 .username(request.getUsername())
@@ -37,9 +37,6 @@ public class AuthenticationService {
 
         userService.create(user);
 
-        var userDetails = new MyUserDetails(user);
-        var jwt = jwtService.generateToken(userDetails);
-        return new JwtResponse(jwt);
     }
 
     /**

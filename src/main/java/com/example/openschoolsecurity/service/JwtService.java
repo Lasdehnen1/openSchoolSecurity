@@ -67,7 +67,7 @@ public class JwtService {
      * @param <T>             тип данных
      * @return данные
      */
-    public  <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {
+    private <T> T extractClaim(String token, Function<Claims, T> claimsResolvers) {
         final Claims claims = extractAllClaims(token);
         return claimsResolvers.apply(claims);
     }
@@ -95,7 +95,7 @@ public class JwtService {
      * @param token токен
      * @return true, если токен просрочен
      */
-    public boolean isTokenExpired(String token) {
+    private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
@@ -115,7 +115,7 @@ public class JwtService {
      * @param token токен
      * @return данные
      */
-    public Claims extractAllClaims(String token) {
+    private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(getSigningKey()).build().parseClaimsJws(token)
                 .getBody();
     }
