@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/example")
 @RequiredArgsConstructor
-@Tag(name = "Аутентификация")
+@Tag(name = "Для проверки авторизации и ролей")
 public class ExampleController {
-    private final UserService service;
 
     @GetMapping
     @Operation(summary = "Доступен только авторизованным пользователям")
